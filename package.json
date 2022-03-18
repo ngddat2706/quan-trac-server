@@ -1,0 +1,30 @@
+{
+  "name": "quan-trac-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngddat2706/quan-trac-server.git"
+  },
+  "keywords": [
+    "NodeJs",
+    "MongoDB"
+  ],
+  "author": "ngddat2706",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ngddat2706/quan-trac-server/issues"
+  },
+  "homepage": "https://github.com/ngddat2706/quan-trac-server#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
