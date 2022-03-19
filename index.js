@@ -9,11 +9,14 @@ const errors = require('./middlewares/errors')
 
 const app = express()
 
+// Connect MongooDB
 mongoose.Promise = global.Promise;
-mongoose.connect(dbConfig.db,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-}).then(
+mongoose.connect(
+    dbConfig.db,{
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    }
+).then(
     ()=>{
         console.log('Database connected')
     },
@@ -34,9 +37,14 @@ app.use(
     })
 )
 
+app.use(express.urlencoded({
+    extended: true
+}));
 app.use(express.json());
 
 app.use("/oauth2", require("./routes/users.router"));
+app.use("/api/Stations", require("./routes/allstations.router"));
+//app.use("/api/Values", require("./routes/allvalues.router"));
 
 app.use(errors.errorHandler);
 
