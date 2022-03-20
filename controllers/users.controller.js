@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const userServices = require("../services/user.service");
+const User = require("../models/user.model");
 
 /**
  * 1. To secure the password, we are using the bcryptjs, It stores the hashed password in the database.
@@ -42,6 +43,11 @@ exports.login = (reg, res, next)=>{
     });
 };
 
-exports.userProfile = (req, res, next)=>{
-    return res.status(200).json({message: "Authorized User!" });
+exports.userProfile = async (req, res, next)=>{
+   try{
+       const users = await User.find();
+       res.json(users);
+   }catch(err){
+       res.json({message: err});
+   }
 };

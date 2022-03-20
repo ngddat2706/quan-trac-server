@@ -27,16 +27,6 @@ mongoose.connect(
 
 app.use(morgan('combined'))
 
-// auth.authenticateToken.unless = unless;
-// app.use(
-//     auth.authenticateToken.unless({
-//         path:[
-//             {url: "/oauth2/login", methods: ["POST"]},
-//             {url: "/oauth2/register", methods: ["POST"]},
-//         ],
-//     })
-// )
-
 app.use(express.urlencoded({
     extended: true
 }));
