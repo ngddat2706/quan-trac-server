@@ -3,8 +3,8 @@ const allstations = require("../controllers/allstations.controller");
 const express = require("express");
 const router = express.Router();
 
-router.get("/GetAll?withValue=True", (req, res)=>{
-    res.send("All station Data");
+router.get("/GetAll", (req, res)=>{
+    res.send("All Station Data");
 });
 
 module.exports = router;

@@ -32,8 +32,12 @@ exports.login = (reg, res, next)=>{
             return next(error);
         }
         return res.status(200).send({
-            message: "Success",
-            data: results,
+            //message: "Success",
+            //data: results,
+            access_token: results.token,
+            token_type: "token_type",
+            expires_in: "1h",
+            refresh_token: results.id
         });
     });
 };

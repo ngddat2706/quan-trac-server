@@ -27,15 +27,15 @@ mongoose.connect(
 
 app.use(morgan('combined'))
 
-auth.authenticateToken.unless = unless;
-app.use(
-    auth.authenticateToken.unless({
-        path:[
-            {url: "/oauth2/login", methods: ["POST"]},
-            {url: "/oauth2/register", methods: ["POST"]},
-        ],
-    })
-)
+// auth.authenticateToken.unless = unless;
+// app.use(
+//     auth.authenticateToken.unless({
+//         path:[
+//             {url: "/oauth2/login", methods: ["POST"]},
+//             {url: "/oauth2/register", methods: ["POST"]},
+//         ],
+//     })
+// )
 
 app.use(express.urlencoded({
     extended: true
@@ -44,7 +44,8 @@ app.use(express.json());
 
 app.use("/oauth2", require("./routes/users.router"));
 app.use("/api/Stations", require("./routes/allstations.router"));
-//app.use("/api/Values", require("./routes/allvalues.router"));
+app.use("/api/Values", require("./routes/allvalues.router"));
+app.use("/api/fcm", require("./routes/notification.router"));
 
 app.use(errors.errorHandler);
 
