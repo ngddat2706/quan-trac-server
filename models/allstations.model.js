@@ -1,33 +1,40 @@
 const mongoose = require("mongoose");
 //const uniqueValidator = require("mongoose-unique-validator");
-const Params = new mongoose.Schema({
+const ParamSchema = new mongoose.Schema({
     Name: {
         type: String,
+        default: "0"
     },
     Code: {
         type: String,
+        default:"",
     },
     Unit: {
         type: String,
+        default:"",
     },
     Min: {
-        type: String,
+        type: Number,
+        default: 0,
     },
     Max: {
-        type: String,
+        type: Number,
+        default: 0,
     },
     Color: {
         type: String,
+        default: "",
     },
 });
 
-const ValueDict = new mongoose.Schema({
+const ValueDictSchema = new mongoose.Schema({
     ParamValue: {
-        type: String,
+        type: Number,
+        default: 0
     },
     ParamStatus: {
-        type: String,
-        default: 0,
+        type: Number,
+        default: 0
     },
     Time: {
         type: Date,
@@ -35,22 +42,28 @@ const ValueDict = new mongoose.Schema({
     },
     Unit: {
         type: String,
+        default: ""
     },
     Min: {
-        type: String,
-        default: 0,
+        type: Number,
+        default: 0
     },
     Max: {
-        type: String,
-        default: 0,
+        type: Number,
+        default: 0
     },
 });
 
-const Value = new mongoose.Schema({
-    ValueDict: [{
-        type: mongoose.Types.ObjectId,
-        ref: 'ValueDict',
-    }],
+const ValueSchema = new mongoose.Schema({
+    Id: {
+        type: String,
+        default: "0"
+    },
+    ValueDict: {
+        type: Map,
+        of: ValueDictSchema,
+        default: {"0": {}},
+    },
     HappenedTime: {
         type: Date,
         default: Date.now(),
@@ -94,14 +107,14 @@ const AllStationSchem = new mongoose.Schema({
         type: Date,
         default: Date.now(),
     },
-    // Params: {
-    //     type: String,
-    //     default: "Not defined"
-    // },
-    // Value: {
-    //     type: String,
-    //     default: "Not defined"
-    // },
+    Params: {
+       type: [ParamSchema],
+       default: {}
+    },
+    Value: {
+        type: ValueSchema,
+        default: {},
+    },
     Connected: {
         type: Boolean,
         default: true,
@@ -110,8 +123,16 @@ const AllStationSchem = new mongoose.Schema({
 });
 
 
-
 AllStationSchem.set("toJSON", {
+    transform: (document, returnedObject)=>{
+        //returnedObject.Id = returnedObject._id.toString();
+        delete returnedObject._id;
+        delete returnedObject.__v;
+        delete returnedObject.Value.Id;
+    },
+});
+
+ValueSchema.set("toJSON", {
     transform: (document, returnedObject)=>{
         //returnedObject.Id = returnedObject._id.toString();
         delete returnedObject._id;
@@ -122,4 +143,8 @@ AllStationSchem.set("toJSON", {
 //AllStationSchem.plugin(uniqueValidator, {message: "Name Station already in use."});
 
 const AllStations = mongoose.model("AllStations", AllStationSchem);
-module.exports = AllStations;
+const AllValues = mongoose.model("AllValues", ValueSchema);
+module.exports = {
+    AllStations,
+    AllValues,
+};

@@ -1,8 +1,8 @@
-const AllStations = require("../models/allstations.model");
+const { AllStations, AllValues } = require("../models/allstations.model");
 const allstationServices = require("../services/allstations.service");
 
-exports.sendData =(req, res, next)=>{
-    allstationServices.sendData(req.body, (error, results)=>{
+exports.addStation =(req, res, next)=>{
+    allstationServices.addStation(req.body, (error, results)=>{
         if(error){
             return next(error);
         }

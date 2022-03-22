@@ -1,16 +1,19 @@
 const allvalues = require("../controllers/allvalues.controller");
+const auth = require('../middlewares/auth')
 
 const express = require("express");
 const router = express.Router();
 
-router.get("/GetAll/:stationId?/:pageNum?/:pageSize?/:interval?/:startTime?/:endTime?", (req, res)=>{
+router.post("/AddValue", allvalues.addValue);
+router.get("/GetAll", allvalues.getValue);
+router.get("/GetAll/Test", auth.authenticateToken, (req, res)=>{
     res.status(200).send({
-        stationId: req.params.stationId,
-        pageNum: req.params.pageNum,
-        pageSize: req.params.pageSize,
-        interval: req.params.interval,
-        startTime: req.params.startTime,
-        endTime: req.params.endTime,
+        stationId: req.query.stationId,
+        pageNum: req.query.pageNum,
+        pageSize: req.query.pageSize,
+        interval: req.query.interval,
+        startTime: req.query.startTime,
+        endTime: req.query.endTime,
     });
 });
 
