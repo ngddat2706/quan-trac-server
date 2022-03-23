@@ -13,27 +13,15 @@ exports.addValue = (req, res, next)=>{
 };
 
 exports.getValue = (req, res, next)=>{
-    allvalueServices.getValue(req.query, (error, results)=>{
+    allvalueServices.getValue(req.query, (error, pageCount,results, pagination)=>{
         if(error){
             return next(error);
         }
-        const Url = "/api/Values/GetAll?"
-                    +"stationId="+ req.query.stationId
-                    +"&pageNum=" + req.query.pageNum
-                    +"&pageSize=" + req.query.pageSize
-                    +"&interval=" + req.query.interval
-                    +"&startTime="+ req.query.startTime
-                    +"&endTime="+ req.query.endTime;
         return res.status(200).send({
             currentPage: Number(req.query.pageNum),
-            pageCount: Number(req.query.pageSize),
+            pageCount: pageCount,
             data: results,
-            pagination: {
-                PreviousUrl: Url,
-                PreviousPages: Url,
-                NextUrl: Url,
-                NextPages: Url,
-            },
+            pagination: pagination,
 
         });
     });
