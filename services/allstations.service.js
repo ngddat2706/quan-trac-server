@@ -1,3 +1,4 @@
+const { response } = require("express");
 const { AllStations, AllValues } = require("../models/allstations.model");
 
 async function addStation(params, callback){
@@ -40,7 +41,19 @@ async function updateStation(params, callback){
     });
 }
 
+async function getStation(params, callback){
+    
+    await AllStations.find().then((response)=>{
+        return callback(null, response);
+    })
+    .catch((error)=>{
+        return callback(error);
+    });
+
+}
+
 module.exports = {
     addStation,
     updateStation,
+    getStation,
 };

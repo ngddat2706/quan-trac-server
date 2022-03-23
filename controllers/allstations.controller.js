@@ -1,4 +1,3 @@
-const { AllStations, AllValues } = require("../models/allstations.model");
 const allstationServices = require("../services/allstations.service");
 
 exports.addStation =(req, res, next)=>{
@@ -14,10 +13,10 @@ exports.addStation =(req, res, next)=>{
 };
 
 exports.getData = async (req, res, next)=>{
-    try{
-        const allStations = await AllStations.find();
-        res.json(allStations);
-    }catch(err){
-        res.json({message: err});
-    }
+    allstationServices.getStation(req.query, (error, results)=>{
+        if(error){
+            return next(error);
+        }
+        return res.status(200).json(results);
+    });
  };

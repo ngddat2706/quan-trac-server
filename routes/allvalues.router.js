@@ -6,6 +6,8 @@ const router = express.Router();
 
 router.post("/AddValue", allvalues.addValue);
 router.get("/GetAll", allvalues.getValue);
+
+//Test take value use Authentication
 router.get("/GetAll/Test", auth.authenticateToken, (req, res)=>{
     res.status(200).send({
         stationId: req.query.stationId,

@@ -30,16 +30,32 @@ async function addValue(params, callback){
 
 async function getValue(params, callback){
     if(params.stationId === undefined){
-        return callback(
-            {
-                message: "stationId Required",
-            },
-            ""
-        );
-    } 
+        return callback({ message: "stationId Required",},"");
+    }
+    if(params.pageNum === undefined){
+        return callback({ message: "pageNum Required",},"");
+    }
+    if(params.pageSize === undefined){
+        return callback({ message: "pageSize Required",},"");
+    }
+    if(params.interval === undefined){
+        return callback({ message: "interval Required",},"");
+    }
+    if(params.startTime === undefined){
+        return callback({ message: "startTime Required",},"");
+    }
+    if(params.endTime === undefined){
+        return callback({ message: "endTime Required",},"");
+    }
 
     try {
-        const allValues = await AllValues.find({Id: params.stationId});
+        const allValues = await AllValues.find({
+            Id: params.stationId,
+            ReceivedTime: {
+                $gte: params.startTime,
+                $lte: params.endTime,
+            } 
+        });
         return callback(null, allValues);
     }
     catch(error){
