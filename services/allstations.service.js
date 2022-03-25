@@ -1,59 +1,64 @@
 const { response } = require("express");
 const { AllStations, AllValues } = require("../models/allstations.model");
 
-async function addStation(params, callback){
-    if(params.Id === undefined){
-        return callback(
-            {
-                message: "Id Station Required",
-            },
-            ""
-        );
-    } 
+async function addStation(params, callback) {
+  if (params.Id === undefined) {
+    return callback(
+      {
+        message: "Id Station Required",
+      },
+      ""
+    );
+  }
 
-    const station = new AllStations(params);
-    station.save()
-    .then((response)=>{
-        return callback(null, response);
+  const station = new AllStations(params);
+  station
+    .save()
+    .then((response) => {
+      return callback(null, response);
     })
-    .catch((error)=>{
-        return callback(error);
+    .catch((error) => {
+      return callback(error);
     });
 }
 
-async function updateStation(params, callback){
-    if(params.Id === undefined){
-        return callback(
-            {
-                message: "Id Station Required",
-            },
-            ""
-        );
-    } 
+//Quang will do this
+async function updateStation(params, callback) {
+  if (params.Id === undefined) {
+    return callback(
+      {
+        message: "Id Station Required",
+      },
+      ""
+    );
+  }
+  const station = await AllStations.findOne({ Id: params.Id });
+  if (!station){
+      return callback("wrong Id");
+  }
 
-    const station = await AllStations.find((station) => station.Id === params.Id);
-    station.updateOne({$set: req.body})
-    .then((response)=>{
-        return callback(null, response);
+  station
+    .updateOne({ $set: params })
+    .then((response) => {
+      return callback(null, response);
     })
-    .catch((error)=>{
-        return callback(error);
+    .catch((error) => {
+      return callback(error);
     });
 }
 
-async function getStation(params, callback){
-    
-    await AllStations.find().then((response)=>{
-        return callback(null, response);
+async function getAllStation(params, callback) {
+  await AllStations.find()
+    .then((response) => {
+      return callback(null, response);
     })
-    .catch((error)=>{
-        return callback(error);
+    .catch((error) => {
+      return callback(error);
     });
-
 }
 
 module.exports = {
-    addStation,
-    updateStation,
-    getStation,
+  addStation,
+  updateStation,
+  getAllStation,
 };

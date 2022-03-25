@@ -6,17 +6,26 @@ exports.addStation =(req, res, next)=>{
             return next(error);
         }
         return res.status(200).send({
-            message: "Success",
+            message: "Add Station Success",
             data: results,
         });
     });
 };
 
-exports.getData = async (req, res, next)=>{
-    allstationServices.getStation(req.query, (error, results)=>{
+exports.getAllStation = async (req, res, next)=>{
+    await allstationServices.getAllStation(req, (error, results)=>{
         if(error){
             return next(error);
         }
         return res.status(200).json(results);
     });
  };
+
+exports.updateStation = async (req,res,next)=>{
+    await allstationServices.updateStation(req.body,(error, results)=>{
+        if(error){
+            return next(error);
+        }
+        return res.status(200).json(results);
+    });
+}

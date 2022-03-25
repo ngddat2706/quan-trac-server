@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 //const uniqueValidator = require("mongoose-unique-validator");
-const ParamSchema = new mongoose.Schema({
+const ParamSchema = mongoose.Schema({
     Name: {
         type: String,
         default: "0"
@@ -27,7 +27,7 @@ const ParamSchema = new mongoose.Schema({
     },
 });
 
-const ValueDictSchema = new mongoose.Schema({
+const ValueDictSchema = mongoose.Schema({
     ParamValue: {
         type: Number,
         default: 0
@@ -54,7 +54,7 @@ const ValueDictSchema = new mongoose.Schema({
     },
 });
 
-const ValueSchema = new mongoose.Schema({
+const ValueSchema = mongoose.Schema({
     Id: {
         type: String,
         default: "0"
@@ -74,7 +74,7 @@ const ValueSchema = new mongoose.Schema({
     },
 });
 
-const AllStationSchem = new mongoose.Schema({
+const AllStationSchem = mongoose.Schema({
     Id: {
         type: String,
         required: true,

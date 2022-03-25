@@ -2,7 +2,8 @@ const User = require("../models/user.model");
 const bcrypt = require("bcryptjs");
 const auth = require("../middlewares/auth");
 
-async function login({ username, password }, callback){
+async function login(params, callback){
+    const {username, password} = params;
     const user = await User.findOne({ username});
 
     if(user != null && password != null){
@@ -23,16 +24,17 @@ async function login({ username, password }, callback){
 }
 
 async function register(params, callback){
-    if(params.username === undefined){
-        console.log(params.username);
-        return callback(
-            {
-                message: "Username Required",
-            },
-            ""
-        );
-    }
-
+    // if(params.username === undefined){
+    //     console.log(params.username);
+    //     return callback(
+    //         {
+    //             message: "Username Required",
+    //         },
+    //         ""
+    //     );
+    // }
+    //Quang will do a validate function later
+    
     const user = new User(params);
     user.save()
     .then((response)=>{

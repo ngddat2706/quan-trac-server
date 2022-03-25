@@ -25,10 +25,9 @@ exports.register = (req, res, next)=>{
     });
 };
 
-exports.login = (reg, res, next)=>{
-    const {username, password} = reg.body;
+exports.login = (req, res, next)=>{
 
-    userServices.login({username, password}, (error, results)=>{
+    userServices.login(req.body, (error, results)=>{
         if(error){
             return next(error);
         }
