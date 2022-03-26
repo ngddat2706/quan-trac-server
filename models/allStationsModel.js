@@ -55,10 +55,6 @@ const ValueDictSchema = mongoose.Schema({
 });
 
 const ValueSchema = mongoose.Schema({
-    Id: {
-        type: String,
-        default: "0"
-    },
     ValueDict: {
         type: Map,
         of: ValueDictSchema,
@@ -111,14 +107,14 @@ const AllStationSchem = mongoose.Schema({
        type: [ParamSchema],
        default: {}
     },
-    Value: {
-        type: ValueSchema,
-        default: {},
-    },
-    Connected: {
-        type: Boolean,
-        default: true,
-    },
+    // Value: {
+    //     type: ValueSchema,
+    //     default: {},
+    // },
+    // Connected: {
+    //     type: Boolean,
+    //     default: true,
+    // },
 
 });
 
@@ -128,7 +124,7 @@ AllStationSchem.set("toJSON", {
         //returnedObject.Id = returnedObject._id.toString();
         delete returnedObject._id;
         delete returnedObject.__v;
-        delete returnedObject.Value.Id;
+        // delete returnedObject.Value._id;
     },
 });
 

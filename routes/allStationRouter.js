@@ -1,4 +1,4 @@
-const allStations = require("../controllers/allstations.controller");
+const allStations = require("../controllers/allStationController.js");
 
 const express = require("express");
 const router = express.Router();

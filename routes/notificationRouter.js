@@ -1,4 +1,4 @@
-const notification = require("../controllers/notification.controller");
+const notification = require("../controllers/notificationController.js");
 
 const express = require("express");
 const router = express.Router();

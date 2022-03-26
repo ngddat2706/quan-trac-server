@@ -1,0 +1,59 @@
+{
+    "Id": "1_43",
+    "Name": "Cầu Vồng",
+    "DeviceCode": "39",
+    "Address": "Vinh Long",
+    "TelNo": "39",
+    "Latitude": "10.2305556",
+    "Longitude": "105.9561111",
+    "InstallDate": "2019-05-07T08:07:37",
+    "ChargeDate": "2020-09-26T12:54:29.98",
+    "Params": [
+        {
+            "Name": "SO2",
+            "Code": "SO2",
+            "Unit": "mg/m3",
+            "Min": 0,
+            "Max": 0,
+            "Display": true,
+            "Color": "#0278BD"
+        },
+        {
+            "Name": "CO",
+            "Code": "CO",
+            "Unit": "mg/m3",
+            "Min": 0,
+            "Max": 0,
+            "Display": true,
+            "Color": "#000001"
+        },
+        {
+            "Name": "NO2",
+            "Code": "NO2",
+            "Unit": "mg/m3",
+            "Min": 0,
+            "Max": 5,
+            "Display": true,
+            "Color": "#9C3838"
+        },
+        {
+            "Name": "O3",
+            "Code": "O3",
+            "Unit": "mg/m3",
+            "Min": 11.5,
+            "Max": 20,
+            "Display": true,
+            "Color": "#FCBA03"
+        },
+        {
+            "Name": "PM2.5",
+            "Code": "PM2.5",
+            "Unit": "mg/m3",
+            "Min": 10.5,
+            "Max": 20,
+            "Display": true,
+            "Color": "#FCBA03"
+        }
+    ]
+}
+

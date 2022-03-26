@@ -1,4 +1,4 @@
-const allvalueServices = require("../services/allvalues.services");
+const allvalueServices = require("../services/allValueServices.js");
 
 exports.addValue = (req, res, next)=>{
     allvalueServices.addValue(req.body, (error, results)=>{

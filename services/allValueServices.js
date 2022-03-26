@@ -1,4 +1,5 @@
-const { AllStations, AllValues } = require("../models/allstations.model");
+const { AllStations, AllValues } = require("../models/allStationsModel.js");
+//fdfdfdfdfdfdf
 
 async function addValue(params, callback){
     if(params.Id === undefined){

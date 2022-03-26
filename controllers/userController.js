@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
-const userServices = require("../services/user.service");
-const User = require("../models/user.model");
+const userServices = require("../services/userService.js");
+const User = require("../models/userModel.js");
 
 /**
  * 1. To secure the password, we are using the bcryptjs, It stores the hashed password in the database.

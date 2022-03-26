@@ -1,4 +1,4 @@
-const fcm = require('../services/notification.service');
+const fcm = require('../services/notificationService.js');
 
 exports.fcm = (req, res, next)=>{
     fcm.notification((error)=>{

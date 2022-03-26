@@ -1,6 +1,6 @@
-const User = require("../models/user.model");
+const User = require("../models/userModel.js");
 const bcrypt = require("bcryptjs");
-const auth = require("../middlewares/auth");
+const auth = require("../middlewares/auth.js");
 
 async function login(params, callback){
     const {username, password} = params;

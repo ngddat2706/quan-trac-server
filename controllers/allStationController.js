@@ -1,4 +1,4 @@
-const allstationServices = require("../services/allstations.service");
+const allstationServices = require("../services/allStationService.js");
 
 exports.addStation =(req, res, next)=>{
     allstationServices.addStation(req.body, (error, results)=>{

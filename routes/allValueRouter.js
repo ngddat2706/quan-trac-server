@@ -1,5 +1,5 @@
-const allvalues = require("../controllers/allvalues.controller");
-const auth = require('../middlewares/auth')
+const allvalues = require("../controllers/allValueController.js");
+const auth = require('../middlewares/auth.js')
 
 const express = require("express");
 const router = express.Router();

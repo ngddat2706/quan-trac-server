@@ -1,5 +1,5 @@
 const { response } = require("express");
-const { AllStations, AllValues } = require("../models/allstations.model");
+const { AllStations, AllValues } = require("../models/allStationsModel.js");
 
 async function addStation(params, callback) {
   if (params.Id === undefined) {
@@ -10,7 +10,6 @@ async function addStation(params, callback) {
       ""
     );
   }
-
   const station = new AllStations(params);
   station
     .save()
@@ -23,8 +22,8 @@ async function addStation(params, callback) {
 }
 
 //Quang will do this
-async function updateStation(params, callback) {
-  if (params.Id === undefined) {
+async function updateStation(station, callback) {
+  if (station.Id === undefined) {
     return callback(
       {
         message: "Id Station Required",
@@ -32,13 +31,18 @@ async function updateStation(params, callback) {
       ""
     );
   }
-  const station = await AllStations.findOne({ Id: params.Id });
-  if (!station){
-      return callback("wrong Id");
+  const foundedStation = await AllStations.findOne({ Id: station.Id });
+  if (!foundedStation) {
+    return callback(
+      {
+        message: "Wrong Id",
+      },
+      ""
+    );
   }
 
-  station
-    .updateOne({ $set: params })
+  foundedStation
+    .updateOne({ $set: station })
     .then((response) => {
       return callback(null, response);
     })

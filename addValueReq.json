@@ -1,0 +1,50 @@
+{
+    "Id": "1_44",
+    "Value": {
+        "ValueDict": {
+            "SO2": {
+                "ParamValue": 258,
+                "ParamStatus": 0,
+                "Time": "2021-12-10T18:19:40",
+                "Unit": "m3/h",
+                "Min": 0,
+                "Max": 0
+            },
+            "CO": {
+                "ParamValue": 6265743.2,
+                "ParamStatus": 0,
+                "Time": "2021-12-10T18:19:40",
+                "Unit": "mg/m3",
+                "Min": 0,
+                "Max": 0
+            },
+            "NO2": {
+                "ParamValue": 0,
+                "ParamStatus": 0,
+                "Time": "2021-12-10T18:19:40",
+                "Unit": "mg/m3",
+                "Min": 0,
+                "Max": 5
+            },
+            "O3": {
+                "ParamValue": 13.9,
+                "ParamStatus": 0,
+                "Time": "2021-12-10T18:19:40",
+                "Unit": "mg/m3",
+                "Min": 11.5,
+                "Max": 20
+            },
+            "PM2.5": {
+                "ParamValue": 13.9,
+                "ParamStatus": 0,
+                "Time": "2021-12-10T18:19:40",
+                "Unit": "mg/m3",
+                "Min": 11.5,
+                "Max": 20
+            }
+        },
+        "HappenedTime": "2021-12-10T18:19:40",
+        "ReceivedTime": "2021-12-10T18:17:41.293"
+    },
+    "Connected": true
+}

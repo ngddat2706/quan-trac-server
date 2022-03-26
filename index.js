@@ -3,7 +3,7 @@ const morgan = require('morgan')
 const unless = require('express-unless')
 const mongoose = require('mongoose')
 require('dotenv/config');
-const dbConfig = require('./config/db.config')
+// const dbConfig = require('./config/db.config')
 const auth = require('./middlewares/auth')
 const errors = require('./middlewares/errors')
 
@@ -28,10 +28,10 @@ app.use(express.urlencoded({
 }));
 app.use(express.json());
 
-app.use("/oauth2", require("./routes/users.router"));
-app.use("/api/Stations", require("./routes/allstations.router"));
-app.use("/api/Values", require("./routes/allvalues.router"));
-app.use("/api/fcm", require("./routes/notification.router"));
+app.use("/oauth2", require("./routes/userRouter.js"));
+app.use("/api/Stations", require("./routes/allStationRouter"));
+app.use("/api/Values", require("./routes/allValueRouter"));
+app.use("/api/fcm", require("./routes/notificationRouter"));
 
 app.use(errors.errorHandler);
 
