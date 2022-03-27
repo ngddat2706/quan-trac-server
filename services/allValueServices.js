@@ -1,5 +1,4 @@
 const { AllStations, AllValues } = require("../models/allStationsModel.js");
-//fdfdfdfdfdfdf
 
 async function addValue(params, callback){
     if(params.Id === undefined){
@@ -15,7 +14,7 @@ async function addValue(params, callback){
     station.save()
     .then(async (response)=>{
         try{
-            await AllStations.updateOne({Id: params.Id},{$set:{Value: response}});
+            await AllStations.updateOne({Id: params.Id},{$set:{Value:{ValueDict:response.ValueDict}}});
             return callback(null, response);
         }
         catch(error){

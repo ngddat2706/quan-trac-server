@@ -107,14 +107,14 @@ const AllStationSchem = mongoose.Schema({
        type: [ParamSchema],
        default: {}
     },
-    // Value: {
-    //     type: ValueSchema,
-    //     default: {},
-    // },
-    // Connected: {
-    //     type: Boolean,
-    //     default: true,
-    // },
+    Value: {
+        type: ValueSchema,
+        default: {},
+    },
+    Connected: {
+        type: Boolean,
+        default: true,
+    },
 
 });
 
@@ -124,7 +124,7 @@ AllStationSchem.set("toJSON", {
         //returnedObject.Id = returnedObject._id.toString();
         delete returnedObject._id;
         delete returnedObject.__v;
-        // delete returnedObject.Value._id;
+        delete returnedObject.Value._id;
     },
 });
 
